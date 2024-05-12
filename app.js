@@ -1,18 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+//必要なライブラリをロードする
+var createError = require('http-errors');     //HTTPエラーの対処を行うもの
+var express = require('express');             //Express本体
+var path = require('path');                   //ファイルパスを扱う
+var cookieParser = require('cookie-parser');  //クッキーのパース(値の変換)
+var logger = require('morgan');               //HTTPリクエストのログ出力に関する者
+//ルート用のモジュールのロード
+var indexRouter = require('./routes/index');  //index.js
+var usersRouter = require('./routes/users');  //users.js
+//Expressオブジェクトの作成と基本設定
 var app = express();
 
-// view engine setup
+// view engine setup　テンプレートエンジンの設定
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+//関数の組み込み
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,5 +38,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+//module.Expressの設定　appオブジェクトを渡す
 module.exports = app;
