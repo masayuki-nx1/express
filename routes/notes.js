@@ -1,5 +1,25 @@
+require('dotenv').config();     //データベースのURLを公開しないため.envから環境変数を読み込む
+
 var express = require('express');
 var router = express.Router();
+
+var {MongoClient} = require("mongodb");
+const uri = process.env.DATABASE_URL;
+const client = new MongoClient(uri);
+
+router.get('/',async(req,res)=>{
+    //データベースコレクションを指定
+    const database = client.db('notes');
+    const notes = database.collection('notes');
+
+    //idが1の時のドキュメントを取得
+    const query = {id:1};
+    const note = await notes.findOne(query);
+
+    res.json(note);
+})
+
+module.exports = router;
 
 // レスポンスのデータ（ノート全件）
 const responseObjectDataAll = {
