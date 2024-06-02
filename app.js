@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');  //index.js
 var usersRouter = require('./routes/users');  //users.js
 var helloRouter = require('./routes/hello');  //hello.jsを追加
 var notesRouter = require('./routes/notes');
+var notesRouter = require('./routes/cat');    //cat.jsを追加、CAT_APIのテスト
 //Expressオブジェクトの作成と基本設定
 var app = express();
 
@@ -26,6 +27,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hello', helloRouter);
 app.use('/notes',notesRouter);
+app.use('/cat',notesRouter);    //CAT_APIのテスト
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
