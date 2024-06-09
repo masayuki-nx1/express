@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 var {MongoClient} = require("mongodb");
-const uri = process.env.DATABASE_URL;
+const uri = process.env.DATABASE_URL;   //Github上にURL(パスワードが含まれているため)を公開しないため変更した。
 const client = new MongoClient(uri);
 
 router.get('/',async(req,res)=>{
