@@ -4,13 +4,15 @@ var express = require('express');             //Express本体
 var path = require('path');                   //ファイルパスを扱う
 var cookieParser = require('cookie-parser');  //クッキーのパース(値の変換)
 var logger = require('morgan');               //HTTPリクエストのログ出力に関する者
+
 //ルート用のモジュールのロード
-var indexRouter = require('./routes/index');  //index.js
-var usersRouter = require('./routes/users');  //users.js
-var helloRouter = require('./routes/hello');  //hello.jsを追加
+var indexRouter = require('./routes/index');    //index.js
+var usersRouter = require('./routes/users');    //users.js
+var helloRouter = require('./routes/hello');    //hello.jsを追加
 var notesRouter = require('./routes/notes');
-var catRouter = require('./routes/cat');    //cat.jsを追加、CAT_APIのテスト
-var qrcodeRouter = require('./routes/qrcode'); 
+var catRouter = require('./routes/cat');        //cat.jsを追加
+var qrcodeRouter = require('./routes/qrcode');  //qrcode.jsを追加
+var dogRouter = require('./routes/dog');        //dog.jsを追加
 //Expressオブジェクトの作成と基本設定
 var app = express();
 
@@ -28,8 +30,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hello', helloRouter);
 app.use('/notes',notesRouter);
-app.use('/cat',catRouter);    //CAT_APIのテスト
-app.use('/qrcode',qrcodeRouter);    //CAT_APIのテスト
+app.use('/cat',catRouter);          //CatAPI
+app.use('/qrcode',qrcodeRouter);    //QRCodeAPI
+app.use('/dog',dogRouter);          //dogAPI   
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
