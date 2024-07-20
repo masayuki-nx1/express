@@ -13,6 +13,7 @@ var notesRouter = require('./routes/notes');
 var catRouter = require('./routes/cat');        //cat.jsを追加
 var qrcodeRouter = require('./routes/qrcode');  //qrcode.jsを追加
 var dogRouter = require('./routes/dog');        //dog.jsを追加
+var notes_from_bRouter = require('./routes/notes_from_b');//notes_from_b.jsを追加
 //Expressオブジェクトの作成と基本設定
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/notes',notesRouter);
 app.use('/cat',catRouter);          //CatAPI
 app.use('/qrcode',qrcodeRouter);    //QRCodeAPI
 app.use('/dog',dogRouter);          //dogAPI   
+app.use('/notes_from_b',notes_from_bRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
